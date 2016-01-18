@@ -54,7 +54,7 @@ public:
         return data[(begin + index)%maxSize];
     }
 
-    T& bottom()
+    T& back()
     {
         return data[(begin + end) % maxSize];
     }

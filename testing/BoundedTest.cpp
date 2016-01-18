@@ -18,7 +18,7 @@ TEST_CASE("Bounded queue sizes")
     {
         REQUIRE(queue.getSize() == 5);
 
-        REQUIRE(queue.bottom() == -1);
+        REQUIRE(queue.back() == -1);
 
         REQUIRE(queue.peek(0) == 1);
         REQUIRE(queue.peek(1) == 3);
@@ -26,11 +26,21 @@ TEST_CASE("Bounded queue sizes")
         REQUIRE(queue.peek(2) == -1);
         REQUIRE(queue.peek(2) == -1);
 
+        //Dequeue a few elements
         REQUIRE(queue.dequeue() == 1);
         REQUIRE(queue.dequeue() == 3);
+
+        REQUIRE(queue.getSize() == 3);
+
+        //Enqueue 2 new elements to make sure that works
+        queue.enqueue(2);
+        queue.enqueue(4);
+        
         REQUIRE(queue.dequeue() == -1);
         REQUIRE(queue.dequeue() == -1);
         REQUIRE(queue.dequeue() == -1);
+        REQUIRE(queue.dequeue() == 2);
+        REQUIRE(queue.dequeue() == 4);
 
         REQUIRE(queue.getSize() == 0);
     }
