@@ -13,6 +13,7 @@ public:
     BoundedQueue(size_t maxSize)
     {
         this->maxSize = maxSize;
+        this->size = 0;
         data = new T[maxSize];
     }
     ~BoundedQueue()
@@ -27,17 +28,14 @@ public:
         data = new T[maxSize];
 
         begin = 0;
-        end = 0;
         size = 0;
     }
 
     //Add an element to the end of the queue. If the queue is full, anything might happen
     void enqueue(T value)
     {
-        data[begin + end] = value;
+        data[(begin + size) % maxSize] = value;
         size++;
-
-        end = (end + 1) % maxSize;
     }
 
     //Pop the element on top of the queue and return it. If the queue is empty, the possibilities are endless
@@ -56,7 +54,7 @@ public:
 
     T& back()
     {
-        return data[(begin + end - 1) % maxSize];
+        return peek(size - 1);
     }
 
     size_t getSize() const
@@ -70,6 +68,5 @@ private:
     size_t size;
 
     size_t begin = 0;
-    size_t end = 0;
 };
 #endif

@@ -17,7 +17,7 @@ TEST_CASE("Bounded queue sizes")
 
     REQUIRE(queue.getSize() == 5);
 
-    REQUIRE(queue.back() == -1);
+    REQUIRE(queue.back() == 10);
 
     SECTION( "Peek" )
     {
@@ -46,7 +46,11 @@ TEST_CASE("Bounded queue sizes")
         REQUIRE(queue.dequeue() == 2);
         REQUIRE(queue.dequeue() == 4);
 
-        std::cout << queue.getSize() << std::endl;
+    }
+
+    SECTION( "Empty" )
+    {
+        //Ensure that the size of the queue is 0 now
         REQUIRE(queue.getSize() == 0);
     }
 }
