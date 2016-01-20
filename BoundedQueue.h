@@ -34,7 +34,7 @@ public:
     //Add an element to the end of the queue. If the queue is full, anything might happen
     void enqueue(T value)
     {
-        data[end] = value;
+        data[begin + end] = value;
         size++;
 
         end = (end + 1) % maxSize;
@@ -56,7 +56,7 @@ public:
 
     T& back()
     {
-        return data[(begin + end) % maxSize];
+        return data[(begin + end - 1) % maxSize];
     }
 
     size_t getSize() const
