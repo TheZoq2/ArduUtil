@@ -49,7 +49,7 @@ public:
 
     T& peek(size_t index)
     {
-        return data[(begin + index)%maxSize];
+        return data[(begin + index) % maxSize];
     }
 
     T& back()
