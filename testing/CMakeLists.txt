@@ -5,6 +5,7 @@ project(myproject)
 set(TEST_NAME "tests")
 add_executable(${TEST_NAME}
     BoundedTest.cpp
+    PtrTest.cpp
     catch.hpp
     catchMain.cpp
     ../BoundedQueue.h
