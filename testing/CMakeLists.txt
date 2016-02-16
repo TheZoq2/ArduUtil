@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 2.6)
 project(myproject)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 set(TEST_NAME "tests")
 add_executable(${TEST_NAME}
     BoundedTest.cpp
